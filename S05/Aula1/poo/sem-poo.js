@@ -1,3 +1,10 @@
+/**
+ * Estudo de Paradigmas: Programação sem POO
+ * 
+ * Este arquivo demonstra como organizamos dados e funções antes de usar
+ * o paradigma de Orientação a Objetos, destacando a repetição de código.
+ */
+
 const meuNumero = 33
 
 function somar(a, b) {
@@ -13,8 +20,12 @@ const objetoPessoa = {
 } 
 
 const meuArray = ["maçã", "laranja", "kiwi"]
-// meuArray[1] // saída : laranja
-// Precisamos repetir sempre o mesmo código na declaraçao de objetos
+
+/**
+ * Problema: Repetição de estrutura em objetos literais.
+ * Precisamos repetir sempre o mesmo código na declaração de objetos.
+ * Se precisarmos de 100 pessoas, teríamos que repetir os métodos em cada uma.
+ */
 const pessoas = [
     {
         nome: "Yan",
@@ -32,7 +43,7 @@ const pessoas = [
         presa: () => {},
         morrer: () => {}
     },
-        {
+    {
         nome: "Maria",
         idade: 47,
         nascer: () => {},
@@ -41,3 +52,6 @@ const pessoas = [
         morrer: () => {}
     }
 ]
+
+console.log("--- Listagem de Pessoas (Sem POO) ---")
+pessoas.forEach(p => console.log(`${p.nome}, ${p.idade} anos.`))

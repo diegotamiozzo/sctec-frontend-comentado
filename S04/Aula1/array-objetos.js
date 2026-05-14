@@ -1,3 +1,10 @@
+/**
+ * Estudo de Arrays de Objetos
+ * 
+ * Uma das estruturas mais comuns no desenvolvimento web é o array de objetos,
+ * onde cada elemento do array representa um item com múltiplas propriedades.
+ */
+
 const pessoas = [
     {
         nome: "Yan",
@@ -9,7 +16,8 @@ const pessoas = [
     }
 ]
 
-console.log(pessoas[0])
+// Acessando o primeiro objeto do array (índice 0)
+console.log("Primeira pessoa da lista:", pessoas[0])
 
 const produtos = [
     {
@@ -24,7 +32,11 @@ const produtos = [
     }
 ]
 
-// Adicionando um novo produto
+/**
+ * Manipulação de Arrays de Objetos
+ */
+
+// Adicionando um novo objeto ao array usando push()
 produtos.push(
     {
         nome: "Biscoito",
@@ -33,9 +45,9 @@ produtos.push(
     }
 )
 
-
-// Uso do for com array de objetos
+console.log("\n--- Listagem de Nomes de Produtos ---");
+// Uso do laço 'for' para percorrer o array e acessar propriedades específicas de cada objeto
 for (let i = 0; i < produtos.length; i++) {
-    console.log(produtos[i].nome)
+    // Acessamos o objeto no índice 'i' e depois sua propriedade 'nome'
+    console.log(`Produto ${i + 1}: ${produtos[i].nome}`)
 }
-
