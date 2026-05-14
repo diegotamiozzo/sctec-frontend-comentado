@@ -1,45 +1,65 @@
-// Objetivo do MAP -> transformar dados e sempre vai criar um novo array
+/**
+ * Estudo de Métodos de Array: map()
+ * 
+ * O método map() cria um NOVO array com os resultados da chamada de uma função
+ * para cada elemento do array original.
+ * 
+ * Regra de ouro: O map() SEMPRE retorna um array do mesmo tamanho do original,
+ * mas com os dados transformados.
+ */
 
-const precos = [100, 90, 250, 50]
-// precos.map((preco) => preco * 0.9)
-const comDesconto = precos.map((preco) => {
-    // return preco * 0.9
-    if (preco > 100) return preco * 0.9
-    return preco
-})
+// --- Exemplo 1: Transformação Simples (Desconto) ---
+const precos = [100, 90, 250, 50];
 
-console.log("Preços originais")
-console.log(precos)
-console.log("Preços com desconto")
-console.log(comDesconto)
+/**
+ * Aplicar 10% de desconto apenas em produtos acima de R$ 100,00.
+ */
+const precosComDesconto = precos.map(preco => {
+    if (preco > 100) {
+        return preco * 0.9; // Retorna valor com 10% de desconto
+    }
+    return preco; // Retorna valor original
+});
 
+console.log("Preços Originais:", precos);
+console.log("Preços com Desconto Condicional:", precosComDesconto);
+
+// --- Exemplo 2: Extração de Dados ---
 const usuarios = [
-    { nome: "Yan", idade: 33 },
-    { nome: "Ana", idade: 26 },
-    { nome: "Joao", idade: 42 }
-]
+    { nome: "Yan", idade: 33, email: "yan@exemplo.com" },
+    { nome: "Ana", idade: 26, email: "ana@exemplo.com" },
+    { nome: "Joao", idade: 42, email: "joao@exemplo.com" }
+];
 
-const nomes = usuarios.map((usuario) => {
-    return usuario.nome
-})
+/**
+ * Criar uma lista contendo apenas os nomes dos usuários.
+ */
+const listaNomes = usuarios.map(u => u.nome);
+console.log("\nLista de Nomes:", listaNomes);
 
-console.log(nomes) // ["Yan", "Ana", "Joao"]
-
-// Exemplo 3 de map
-
-
+// --- Exemplo 3: Transformação de Objetos (Formatação) ---
 const produtos = [
     { nome: "Notebook", preco: 3000 },
     { nome: "Mouse", preco: 100 },
-    { nome: "Teclado", preco: 129 },
-]
+    { nome: "Teclado", preco: 129 }
+];
 
-const precosFormatados = produtos.map((produto) => {
+/**
+ * Criar um novo array de objetos com valores formatados para exibição.
+ */
+const vitrineProdutos = produtos.map(p => {
     return {
-        nome: produto.nome,
-        valorReal: `R$ ${produto.preco}`,
-        valorDolar: ` ${produto.preco * 5} usd`,
-    }
-})
+        item: p.nome.toUpperCase(),
+        precoBRL: p.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        precoUSD: (p.preco / 5).toFixed(2) + " USD"
+    };
+});
 
-console.log(precosFormatados)
+console.log("\nVitrine de Produtos Formatada:");
+console.table(vitrineProdutos); // console.table é ótimo para visualizar arrays de objetos!
+
+/**
+ * Diferença entre forEach e map:
+ * - forEach: Apenas percorre (não retorna nada). Use para efeitos colaterais (ex: salvar no banco).
+ * - map: Percorre e TRANSFORMA (retorna um novo array). Use para preparar dados para a interface.
+ */

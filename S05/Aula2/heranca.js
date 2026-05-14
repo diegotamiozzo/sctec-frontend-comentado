@@ -1,35 +1,72 @@
+/**
+ * Estudo de POO: Herança
+ * 
+ * A herança permite que uma classe (filha) herde propriedades e métodos
+ * de outra classe (pai/superclasse), promovendo o reuso de código.
+ */
+
+// Classe Pai (Superclasse)
 class Animal {
-    nomeAnimal = ''
     constructor(nome) {
-        this.nomeAnimal = nome
+        this.nome = nome;
     }
 
     comer() {
-        console.log("O animal está comendo")
+        console.log(`${this.nome} está se alimentando.`);
+    }
+
+    dormir() {
+        console.log(`${this.nome} está dormindo... Zzz`);
     }
 }
 
+/**
+ * Classe Filha (Subclasse)
+ * 'extends' indica que Cachorro herda de Animal.
+ */
 class Cachorro extends Animal {       
-    raca = ''
     constructor(nome, raca) {
-        super(nome)
-        this.raca = raca
-    }
-    latir() {
-        console.log(`O ${this.nomeAnimal} está latindo`)
+        // 'super' chama o construtor da classe pai (Animal)
+        super(nome);
+        this.raca = raca;
     }
 
+    latir() {
+        console.log(`${this.nome} (${this.raca}) diz: Au Au!`);
+    }
+
+    /**
+     * Polimorfismo (Sobrescrita de Método):
+     * Podemos redefinir um método da classe pai para que ele se comporte
+     * de forma específica na classe filha.
+     */
     comer() {
-       console.log("O cachorro está comendo ração") 
+        console.log(`${this.nome} está comendo ração para cães.`);
     }
 }
 
 class Gato extends Animal {
     miar() {
-        console.log("O gato está miando")
+        console.log(`${this.nome} diz: Miau!`);
     }
 }
 
-const cachorro = new Cachorro('Buzzy')
-cachorro.latir()
-cachorro.comer()
+// Testando a Herança
+console.log("--- Teste de Herança ---");
+
+const meuDog = new Cachorro('Buzzy', 'Beagle');
+meuDog.latir();
+meuDog.comer();  // Método sobrescrito
+meuDog.dormir(); // Método herdado da classe Animal
+
+const meuGato = new Gato('Tom');
+meuGato.miar();
+meuGato.comer();  // Método original da classe Animal
+meuGato.dormir(); // Método herdado
+
+/**
+ * Conceitos Chave:
+ * - extends: Cria a relação de herança.
+ * - super(): Necessário para inicializar a classe pai dentro da filha.
+ * - Sobrescrita: Alterar o comportamento de um método herdado.
+ */

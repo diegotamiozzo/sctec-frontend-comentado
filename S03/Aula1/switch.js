@@ -1,31 +1,48 @@
-// Exemplo para leitura de semaforo
-const cor = "vermelho"
+/**
+ * Estudo de Switch Case: Controle de Fluxo e Agrupamento de Casos
+ */
 
-switch (cor) {
+// --- Exemplo 1: Controle de Semáforo ---
+const corSemaforo = "vermelho";
+
+console.log("--- Semáforo ---");
+switch (corSemaforo) {
     case "vermelho":
-        console.log("Pare")
-        break
+        console.log("Ação: PARE!");
+        break; // O break impede que o código execute o próximo case
     case "amarelo":
-        console.log("Atenção")
-        break
+        console.log("Ação: ATENÇÃO!");
+        break;
     case "verde":
-        console.log("Siga")
-        break
+        console.log("Ação: SIGA!");
+        break;
     default:
-        console.log("Cor inválida")
+        console.log("Erro: Cor de semáforo desconhecida.");
 }
 
+// --- Exemplo 2: Agrupamento de Casos (Fall-through) ---
+/**
+ * Podemos agrupar vários casos que devem executar a mesma lógica.
+ */
+const frutaDesejada = "banana";
 
-const frutaConsumidor = "banana"
-
-switch (frutaConsumidor) {
+console.log("\n--- Estoque de Frutas ---");
+switch (frutaDesejada) {
     case "maçã":
     case "uva":        
     case "banana":
-        return console.log("Fruta disponivel")
+        // Se for maçã, uva OU banana, cairá aqui.
+        console.log(`A fruta '${frutaDesejada}' está disponível em nosso estoque.`);
+        break;
     case "manga":
-        return console.log("Fruta indisponivel")
+        console.log("A manga está em falta no momento.");
+        break;
     default:
-        console.log("Fruta não encontrada")
+        console.log("Desculpe, não trabalhamos com essa fruta.");
 }
 
+/**
+ * Nota Importante:
+ * O uso de 'return' dentro de um switch só é válido se o switch estiver
+ * dentro de uma função. Caso contrário, use 'break'.
+ */

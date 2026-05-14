@@ -1,21 +1,33 @@
-// const objetivo = (se algo acontecer) ? faça isso : faça aquilo
-// const resultado = (idade >= 18) ? 'Maior de idade' : 
-//                                 'Menor de idade'   
-// console.log(resultado)
+/**
+ * Estudo do Operador Ternário
+ * 
+ * O operador ternário é uma forma compacta de escrever um 'if...else'.
+ * Sintaxe: (condição) ? (valor_se_verdadeiro) : (valor_se_falso)
+ */
 
-const identificarMaioridade = (idade) => 
-    (idade >= 18) ? console.log('Maior de idade') : console.log('Menor de idade')
+const idadeUsuario = 20;
 
+// Exemplo 1: Atribuição de valor baseada em condição
+const statusIdade = (idadeUsuario >= 18) ? 'Maior de idade' : 'Menor de idade';
+console.log(`O usuário é: ${statusIdade}`);
+
+// Exemplo 2: Uso dentro de uma Arrow Function
+/**
+ * Esta função recebe a idade e executa um console.log diferente
+ * dependendo da condição.
+ */
+const verificarAcesso = (idade) => 
+    (idade >= 18) 
+        ? console.log('Acesso Permitido: Usuário é maior de idade.') 
+        : console.log('Acesso Negado: Usuário é menor de idade.');
+
+console.log("--- Teste de Acesso ---");
+verificarAcesso(20);
+verificarAcesso(15);
 
 /**
- * o codigo acima substitui todo o codigo abaixo
- function identificarMaioridade(idade) {
-    if (idade >= 18) {
-    console.log('Maior de idade')   
-    } else {
-        console.log('Menor de idade')
-    }
-}
-
-identificarMaioridade(20)
+ * Quando usar o Ternário?
+ * - Para atribuições simples de variáveis.
+ * - Para retornos rápidos em funções.
+ * - Evite ternários aninhados (um dentro do outro), pois tornam o código difícil de ler.
  */
