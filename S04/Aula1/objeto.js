@@ -1,46 +1,63 @@
+/**
+ * Estudo de Objetos em JavaScript
+ * 
+ * Objetos são coleções de propriedades, onde cada propriedade é uma associação
+ * entre um nome (ou chave) e um valor.
+ */
+
 const pessoa = {
-    // propriedade: valor (chave-valor)
+    // chave: valor
     nome: "Yan",
     idade: 33,
-
+    profissao: "Desenvolvedor",
     endereco: {
-        rua: "",
-        bairro: "",
-        numero: ""
+        rua: "Av. Central",
+        bairro: "Centro",
+        numero: "100"
     }
-}
+};
 
-console.log(`${pessoa.nome} tem ${pessoa.idade} anos`)
-// console.log(pessoa.nome + ' tem ' + pessoa.idade + ' anos')
-console.log(`${pessoa["nome"]} tem ${pessoa["idade"]} anos`)
+// 1. Acessando propriedades:
+// Via notação de ponto (mais comum):
+console.log(`Acesso via ponto: ${pessoa.nome} tem ${pessoa.idade} anos.`);
 
-// Adicionando nova propriedade
-pessoa["cor_olho"] = "castanho"
-// console.log(pessoa)
-// Removendo uma propriedade
-delete pessoa.endereco // pessoa["endereco"] 
+// Via notação de colchetes (útil quando a chave está em uma variável):
+console.log(`Acesso via colchetes: ${pessoa["nome"]} mora no bairro ${pessoa["endereco"]["bairro"]}.`);
 
-//  Mudando o valor de uma propriedade
-pessoa["idade"] = 34
+// 2. Modificando e Adicionando propriedades:
+pessoa.idade = 34; // Modificando
+pessoa["cor_olho"] = "castanho"; // Adicionando nova chave
+console.log("\nApós modificações:", pessoa);
 
-// console.log(pessoa)
+// 3. Removendo propriedades:
+delete pessoa.endereco;
+console.log("\nApós remover 'endereco':", pessoa);
 
-console.log(
-    Object.keys(pessoa)
-)
+// 4. Métodos úteis do Object:
+console.log("\n--- Metadados do Objeto ---");
+// Object.keys(): Retorna um array com os nomes das chaves
+console.log("Chaves do objeto:", Object.keys(pessoa));
 
-console.log(pessoa)
-// console.log(
-//     Object.values(pessoa)
-// )
+// Object.values(): Retorna um array com os valores
+console.log("Valores do objeto:", Object.values(pessoa));
 
+// Object.entries(): Retorna um array de arrays [chave, valor]
+console.log("Entradas (chave/valor):", Object.entries(pessoa));
 
-// // Fazer um exemplo com array
-// objeto = {
-//     cargo: "",
-//     status: ""
-// }
+/**
+ * Exemplo Prático: Removendo múltiplas propriedades dinamicamente
+ */
+const configuracao = {
+    tema: "dark",
+    notificacoes: true,
+    cache: "100mb",
+    logs: "debug"
+};
 
-// const propriedadesRemover = ["cargo", "status"]
+const camposParaRemover = ["cache", "logs"];
 
-// propriedadesRemover.forEach(prop => delete objeto[prop])
+camposParaRemover.forEach(campo => {
+    delete configuracao[campo];
+});
+
+console.log("\nConfiguração limpa:", configuracao);

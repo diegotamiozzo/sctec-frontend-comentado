@@ -9,7 +9,7 @@ const pessoas = [
     }
 ]
 
-// console.log(pessoas[0])
+console.log(pessoas[0])
 
 const produtos = [
     {
